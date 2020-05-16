@@ -7,15 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		900AB23B246EE7E700B65E49 /* TestRainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900AB23A246EE7E700B65E49 /* TestRainbow.swift */; };
+		900AB23D246F6BEE00B65E49 /* GradientBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900AB23C246F6BEE00B65E49 /* GradientBorder.swift */; };
+		900AB27224704EB900B65E49 /* AdvancedTimingRainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900AB27124704EB900B65E49 /* AdvancedTimingRainbow.swift */; };
+		900AB27424704EF500B65E49 /* SharpGradientBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900AB27324704EF500B65E49 /* SharpGradientBorder.swift */; };
 		9055443C245E237300239007 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055443B245E237300239007 /* AppDelegate.swift */; };
 		9055443E245E237300239007 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055443D245E237300239007 /* SceneDelegate.swift */; };
 		90554440245E237300239007 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055443F245E237300239007 /* ContentView.swift */; };
 		90554442245E237C00239007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90554441245E237C00239007 /* Assets.xcassets */; };
 		90554445245E237C00239007 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90554444245E237C00239007 /* Preview Assets.xcassets */; };
 		90554448245E237C00239007 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90554446245E237C00239007 /* LaunchScreen.storyboard */; };
+		90554450245E2F3100239007 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055444F245E2F3100239007 /* SwiftUIView.swift */; };
+		90D8E2E4246EA42E002AE17D /* CustomCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E2E3246EA42E002AE17D /* CustomCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		900AB23A246EE7E700B65E49 /* TestRainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRainbow.swift; sourceTree = "<group>"; };
+		900AB23C246F6BEE00B65E49 /* GradientBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBorder.swift; sourceTree = "<group>"; };
+		900AB27124704EB900B65E49 /* AdvancedTimingRainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedTimingRainbow.swift; sourceTree = "<group>"; };
+		900AB27324704EF500B65E49 /* SharpGradientBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharpGradientBorder.swift; sourceTree = "<group>"; };
 		90554438245E237300239007 /* animationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = animationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9055443B245E237300239007 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9055443D245E237300239007 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +34,8 @@
 		90554444245E237C00239007 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		90554447245E237C00239007 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90554449245E237C00239007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9055444F245E2F3100239007 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		90D8E2E3246EA42E002AE17D /* CustomCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomCircle.swift; path = animationTest/CustomCircle.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +52,7 @@
 		9055442F245E237300239007 = {
 			isa = PBXGroup;
 			children = (
+				9055444F245E2F3100239007 /* SwiftUIView.swift */,
 				9055443A245E237300239007 /* animationTest */,
 				90554439245E237300239007 /* Products */,
 			);
@@ -59,6 +72,11 @@
 				9055443B245E237300239007 /* AppDelegate.swift */,
 				9055443D245E237300239007 /* SceneDelegate.swift */,
 				9055443F245E237300239007 /* ContentView.swift */,
+				900AB23A246EE7E700B65E49 /* TestRainbow.swift */,
+				900AB23C246F6BEE00B65E49 /* GradientBorder.swift */,
+				900AB27124704EB900B65E49 /* AdvancedTimingRainbow.swift */,
+				900AB27324704EF500B65E49 /* SharpGradientBorder.swift */,
+				90D8E2E3246EA42E002AE17D /* CustomCircle.swift */,
 				90554441245E237C00239007 /* Assets.xcassets */,
 				90554446245E237C00239007 /* LaunchScreen.storyboard */,
 				90554449245E237C00239007 /* Info.plist */,
@@ -146,8 +164,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90D8E2E4246EA42E002AE17D /* CustomCircle.swift in Sources */,
+				900AB27424704EF500B65E49 /* SharpGradientBorder.swift in Sources */,
 				9055443C245E237300239007 /* AppDelegate.swift in Sources */,
+				900AB23D246F6BEE00B65E49 /* GradientBorder.swift in Sources */,
 				9055443E245E237300239007 /* SceneDelegate.swift in Sources */,
+				90554450245E2F3100239007 /* SwiftUIView.swift in Sources */,
+				900AB23B246EE7E700B65E49 /* TestRainbow.swift in Sources */,
+				900AB27224704EB900B65E49 /* AdvancedTimingRainbow.swift in Sources */,
 				90554440245E237300239007 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
