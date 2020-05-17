@@ -63,7 +63,7 @@ struct CustomCircleView: View{
                 )
     }
 }
-struct TestView: View {
+struct CustomCircleTestView: View {
     @State var radius: CGFloat = 50
     var body: some View {
         VStack{
@@ -87,6 +87,6 @@ struct TestView: View {
 
 struct CustomCircle_Previews: PreviewProvider {
     static var previews: some View {
-        TestView()
+        CustomCircleTestView()
     }
 }

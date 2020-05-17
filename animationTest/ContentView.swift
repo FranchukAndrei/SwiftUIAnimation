@@ -12,8 +12,10 @@ import SwiftUI
 struct ContentView: View{
     @State var position: CGFloat = 0
     var body: some View{
-        TestRainbowView()
-   //     .border(Color.black, width: 2)
+        //CustomCircleTestView
+      //  TestRainbowView()
+        AdvancedTimingRainbow()
+       // ZIndexTestView()
     }
 }
 
@@ -30,7 +32,6 @@ struct SimpleView:  Animatable, View{
             Rectangle()
                 .fill(Color.gray)
             BorderView(position: position)
-                
         }
     }
 }
@@ -39,7 +40,6 @@ struct BorderView: View{
     var position: CGFloat
     var body: some View{
         GeometryReader{geometry in
-
             Rectangle()
                 .fill(Color.green)
                 .frame(width: 10)
