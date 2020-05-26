@@ -21,14 +21,19 @@
 		90554442245E237C00239007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90554441245E237C00239007 /* Assets.xcassets */; };
 		90554445245E237C00239007 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90554444245E237C00239007 /* Preview Assets.xcassets */; };
 		90554448245E237C00239007 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90554446245E237C00239007 /* LaunchScreen.storyboard */; };
-		90554450245E2F3100239007 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055444F245E2F3100239007 /* SwiftUIView.swift */; };
+		9075958B2472C2DA006751A5 /* AnimationStopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9075958A2472C2DA006751A5 /* AnimationStopping.swift */; };
+		9075958F2476D693006751A5 /* TransitionTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9075958E2476D693006751A5 /* TransitionTestView.swift */; };
+		9075959124797B74006751A5 /* OriginalRainbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9075959024797B73006751A5 /* OriginalRainbow.swift */; };
+		90759595247980E8006751A5 /* SimpleBorderMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90759594247980E8006751A5 /* SimpleBorderMove.swift */; };
+		90759597247C422E006751A5 /* TransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90759596247C422D006751A5 /* TransitionView.swift */; };
+		9075959A247D53A5006751A5 /* TimingCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90759599247D53A5006751A5 /* TimingCurveView.swift */; };
 		90D8E2E4246EA42E002AE17D /* CustomCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E2E3246EA42E002AE17D /* CustomCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		900AB23A246EE7E700B65E49 /* TestRainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRainbow.swift; sourceTree = "<group>"; };
+		900AB23A246EE7E700B65E49 /* TestRainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestRainbow.swift; path = animationTest/SimpleGradient/TestRainbow.swift; sourceTree = SOURCE_ROOT; };
 		900AB23C246F6BEE00B65E49 /* GradientBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBorder.swift; sourceTree = "<group>"; };
-		900AB27124704EB900B65E49 /* AdvancedTimingRainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedTimingRainbow.swift; sourceTree = "<group>"; };
+		900AB27124704EB900B65E49 /* AdvancedTimingRainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdvancedTimingRainbow.swift; path = animationTest/ComplexGradient/AdvancedTimingRainbow.swift; sourceTree = SOURCE_ROOT; };
 		900AB27324704EF500B65E49 /* SharpGradientBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharpGradientBorder.swift; sourceTree = "<group>"; };
 		900AB2752470AA8E00B65E49 /* ZIndexTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZIndexTestView.swift; sourceTree = "<group>"; };
 		900AB2772471BA0500B65E49 /* PositionModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionModifiers.swift; sourceTree = "<group>"; };
@@ -42,8 +47,13 @@
 		90554444245E237C00239007 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		90554447245E237C00239007 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90554449245E237C00239007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9055444F245E2F3100239007 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		90D8E2E3246EA42E002AE17D /* CustomCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomCircle.swift; path = animationTest/CustomCircle.swift; sourceTree = SOURCE_ROOT; };
+		9075958A2472C2DA006751A5 /* AnimationStopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimationStopping.swift; path = animationTest/ComplexGradient/AnimationStopping.swift; sourceTree = SOURCE_ROOT; };
+		9075958E2476D693006751A5 /* TransitionTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransitionTestView.swift; path = animationTest/ComplexGradient/TransitionTestView.swift; sourceTree = SOURCE_ROOT; };
+		9075959024797B73006751A5 /* OriginalRainbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalRainbow.swift; sourceTree = "<group>"; };
+		90759594247980E8006751A5 /* SimpleBorderMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SimpleBorderMove.swift; path = animationTest/Bases/SimpleBorderMove.swift; sourceTree = SOURCE_ROOT; };
+		90759596247C422D006751A5 /* TransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransitionView.swift; path = animationTest/Bases/TransitionView.swift; sourceTree = SOURCE_ROOT; };
+		90759599247D53A5006751A5 /* TimingCurveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingCurveView.swift; sourceTree = "<group>"; };
+		90D8E2E3246EA42E002AE17D /* CustomCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomCircle.swift; path = animationTest/Bases/CustomCircle.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +70,6 @@
 		9055442F245E237300239007 = {
 			isa = PBXGroup;
 			children = (
-				9055444F245E2F3100239007 /* SwiftUIView.swift */,
 				9055443A245E237300239007 /* animationTest */,
 				90554439245E237300239007 /* Products */,
 			);
@@ -80,15 +89,10 @@
 				9055443B245E237300239007 /* AppDelegate.swift */,
 				9055443D245E237300239007 /* SceneDelegate.swift */,
 				9055443F245E237300239007 /* ContentView.swift */,
-				900AB23A246EE7E700B65E49 /* TestRainbow.swift */,
-				900AB2772471BA0500B65E49 /* PositionModifiers.swift */,
-				900AB23C246F6BEE00B65E49 /* GradientBorder.swift */,
-				900AB27124704EB900B65E49 /* AdvancedTimingRainbow.swift */,
-				900AB2792471BA8900B65E49 /* SharpPositionModifier.swift */,
-				900AB27B2471BD3D00B65E49 /* Colors.swift */,
-				900AB2752470AA8E00B65E49 /* ZIndexTestView.swift */,
-				900AB27324704EF500B65E49 /* SharpGradientBorder.swift */,
-				90D8E2E3246EA42E002AE17D /* CustomCircle.swift */,
+				90759598247C42C5006751A5 /* Bases */,
+				9075959224797ED1006751A5 /* SimpleGradient */,
+				9075959324797EF9006751A5 /* ComplexGradient */,
+				9075959024797B73006751A5 /* OriginalRainbow.swift */,
 				90554441245E237C00239007 /* Assets.xcassets */,
 				90554446245E237C00239007 /* LaunchScreen.storyboard */,
 				90554449245E237C00239007 /* Info.plist */,
@@ -103,6 +107,41 @@
 				90554444245E237C00239007 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9075959224797ED1006751A5 /* SimpleGradient */ = {
+			isa = PBXGroup;
+			children = (
+				900AB23C246F6BEE00B65E49 /* GradientBorder.swift */,
+				900AB2772471BA0500B65E49 /* PositionModifiers.swift */,
+				900AB23A246EE7E700B65E49 /* TestRainbow.swift */,
+			);
+			path = SimpleGradient;
+			sourceTree = "<group>";
+		};
+		9075959324797EF9006751A5 /* ComplexGradient */ = {
+			isa = PBXGroup;
+			children = (
+				900AB27124704EB900B65E49 /* AdvancedTimingRainbow.swift */,
+				900AB27324704EF500B65E49 /* SharpGradientBorder.swift */,
+				900AB2792471BA8900B65E49 /* SharpPositionModifier.swift */,
+				90759599247D53A5006751A5 /* TimingCurveView.swift */,
+				900AB27B2471BD3D00B65E49 /* Colors.swift */,
+				900AB2752470AA8E00B65E49 /* ZIndexTestView.swift */,
+				9075958A2472C2DA006751A5 /* AnimationStopping.swift */,
+				9075958E2476D693006751A5 /* TransitionTestView.swift */,
+			);
+			path = ComplexGradient;
+			sourceTree = "<group>";
+		};
+		90759598247C42C5006751A5 /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				90D8E2E3246EA42E002AE17D /* CustomCircle.swift */,
+				90759594247980E8006751A5 /* SimpleBorderMove.swift */,
+				90759596247C422D006751A5 /* TransitionView.swift */,
+			);
+			path = Bases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,17 +215,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90759595247980E8006751A5 /* SimpleBorderMove.swift in Sources */,
 				90D8E2E4246EA42E002AE17D /* CustomCircle.swift in Sources */,
 				900AB27424704EF500B65E49 /* SharpGradientBorder.swift in Sources */,
+				9075958B2472C2DA006751A5 /* AnimationStopping.swift in Sources */,
+				90759597247C422E006751A5 /* TransitionView.swift in Sources */,
+				9075959124797B74006751A5 /* OriginalRainbow.swift in Sources */,
 				9055443C245E237300239007 /* AppDelegate.swift in Sources */,
 				900AB23D246F6BEE00B65E49 /* GradientBorder.swift in Sources */,
 				900AB27A2471BA8900B65E49 /* SharpPositionModifier.swift in Sources */,
 				900AB2762470AA8E00B65E49 /* ZIndexTestView.swift in Sources */,
+				9075958F2476D693006751A5 /* TransitionTestView.swift in Sources */,
 				9055443E245E237300239007 /* SceneDelegate.swift in Sources */,
 				900AB2782471BA0500B65E49 /* PositionModifiers.swift in Sources */,
 				900AB27C2471BD3D00B65E49 /* Colors.swift in Sources */,
-				90554450245E2F3100239007 /* SwiftUIView.swift in Sources */,
 				900AB23B246EE7E700B65E49 /* TestRainbow.swift in Sources */,
+				9075959A247D53A5006751A5 /* TimingCurveView.swift in Sources */,
 				900AB27224704EB900B65E49 /* AdvancedTimingRainbow.swift in Sources */,
 				90554440245E237300239007 /* ContentView.swift in Sources */,
 			);
