@@ -12,47 +12,18 @@ import SwiftUI
 struct ContentView: View{
     @State var position: CGFloat = 0
     var body: some View{
-        //CustomCircleTestView
+//        RainbowBarExampleView()
+//          SimpleBorderMove()
+        TransitionTestView()
+  //      TransitionTestView()
+//        SharpGradientBorder()
+        //     CustomCircleTestView()
       //  TestRainbowView()
-        AdvancedTimingRainbow()
+//         AdvancedTimingRainbow()
        // ZIndexTestView()
-    }
-}
-
-struct SimpleView:  Animatable, View{
-    public var animatableData: Double {
-        get { Double(position) }
-        set {
-            self.position = CGFloat(newValue)
-        }
-    }
-    var position: CGFloat
-    var body: some View{
-        ZStack{
-            Rectangle()
-                .fill(Color.gray)
-            BorderView(position: position)
-        }
-    }
-}
-
-struct BorderView: View{
-    var position: CGFloat
-    var body: some View{
-        GeometryReader{geometry in
-            Rectangle()
-                .fill(Color.green)
-                .frame(width: 10)
-               // .wavePosition(time: self.position)
-                .offset(x: self.getXOffset(inSize: geometry.size), y: 0)
-                .animation(nil)
-        }
-    
-    }
-    
-    func getXOffset(inSize: CGSize) -> CGFloat{
-        print("position is: \(position)")
-        return -inSize.width / 2 + inSize.width * position
+       // AnimationStopping()
+        //FullSwiftUIRainbow()
+//        TransitionView()
     }
 }
 
