@@ -10,23 +10,10 @@ import SwiftUI
 
 
 struct ContentView: View{
-    @State var position: CGFloat = 0
     var body: some View{
-//        RainbowBarExampleView()
-//        SimpleBorderMove()
-//         TransitionTestView()
         TransitionRainbowView()
-//        SharpGradientBorder()
-        //     CustomCircleTestView()
-      //  TestRainbowView()
-//         AdvancedTimingRainbow()
-       // ZIndexTestView()
-       // AnimationStopping()
-        //FullSwiftUIRainbow()
-//               TransitionView()
- //       TimingCurveView()
-  //      TransitionWithInfiniteAnimation()
-        
+
+        //TransitionView()
     }
 }
 

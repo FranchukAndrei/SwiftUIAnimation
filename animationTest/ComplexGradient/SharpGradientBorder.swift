@@ -145,6 +145,7 @@ struct SharpGradientView: View {
                 .frame(height: self.bottomRadius)
             }
                 .leadingEdgeTrimmed(waveGeometry: WaveGeometry(topRadius: topRadius, bottomRadius: bottomRadius, gradientLength: gradientLength))
+            //.drawingGroup()
      //   }
     }
 

@@ -65,7 +65,7 @@ struct Truncate: AnimatableModifier {
                     .clipShape(self.getShape(in: geometry.size))
                 
                 if self.leading{
-                    HStack(spacing: 0){
+                    HStack(spacing: -1){
                         ZStack{
                             SharpGradientBorder(start: self.background,
                                                 end: startingColor,
@@ -186,17 +186,20 @@ struct RainbowTransitionView: View {
                                 Double(TimingCurve.control.point1.y),
                                 Double(TimingCurve.control.point2.x),
                                 Double(TimingCurve.control.point2.y),
-                                duration: 2)
+                                duration: 1)
     var body: some View {
         VStack(spacing: 0){
             HStack(spacing: 0){
                 if isShown{
                     SharpRainbowView(animationHandler: animationHandler)
                      .rotation3DEffect(Angle(degrees: 180), axis: (x: 0, y: 1, z: 0))
+                        .drawingGroup()
+
                      .transition(AnyTransition.asymmetric(
                         insertion: AnyTransition.truncate(appeare: true, background: self.background, animationState: animationHandler, reflected: true).animation(animation),
                         removal: AnyTransition.truncate(appeare: false, background: self.background, animationState: animationHandler, reflected: true).animation(animation))
                         )
+
                         
                 }
                 Rectangle()
@@ -204,14 +207,19 @@ struct RainbowTransitionView: View {
                     .frame(width: 175)
                 if isShown{
                     SharpRainbowView(animationHandler: animationHandler)
+                        .drawingGroup()
+
                         .transition(AnyTransition.asymmetric(
                            insertion: AnyTransition.truncate(appeare: true, background: self.background, animationState: animationHandler).animation(animation),
                            removal: AnyTransition.truncate(appeare: false, background: self.background, animationState: animationHandler).animation(animation))
                         )
+
                         
                 }
             }
-            .frame(width: statusBarframe.width, height: 30)
+
+ 
+                .frame(width: statusBarframe.width, height: 30)
             StatusBarHider(isShown: isShown)
         }
             .background(background)
@@ -235,7 +243,7 @@ struct StatusBarHider: View{
     @State var internalIsShown = true
     var body: some View{
         if isShown == false && self.internalIsShown == true{
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.6){
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7){
                 self.internalIsShown = self.isShown
             }
         }else if isShown == true && self.internalIsShown == false{
@@ -245,7 +253,7 @@ struct StatusBarHider: View{
         }
         return Spacer()
             .statusBar(hidden: internalIsShown)
-            .animation(Animation.linear(duration: 0.4))
+            .animation(Animation.linear(duration: 0.3))
     }
 }
 struct TransitionRainbowView: View {
@@ -259,6 +267,7 @@ struct TransitionRainbowView: View {
     var body: some View {
         ZStack{
             RainbowTransitionView(isShown: isShown, animationHandler: animationHandler, background: background)
+
             Rectangle()
                 .fill(background)
             .overlay(

@@ -61,7 +61,7 @@ class TimingCurve{
         guard var currentInd = TimingCurve.storedCurveParts.firstIndex(where: {$0.startPoint.x <= x && x <= $0.endPoint.x}) else{fatalError("curve doesnt contain point with such x: \(x)")}
         var currentPart = TimingCurve.storedCurveParts[currentInd]
         var delta = min(currentPart.endPoint.x - x, x - currentPart.startPoint.x)
-        while delta > 0.01{
+        while delta > 0.001{
             let starthalf = currentPart.trimmedCurve.trimmedPath(from: 0, to: 0.5)
             guard let middlePoint = starthalf.currentPoint else{fatalError("curve too small")}
             let middlePosition = currentPart.startPart + (currentPart.endPart - currentPart.startPart) / 2

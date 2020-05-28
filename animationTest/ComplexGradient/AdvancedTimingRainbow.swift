@@ -52,7 +52,7 @@ struct AdvancedTimingRainbow: View {
 
 struct SharpRainbowView: View{
     let waves: [SharpGradientBorder]
-    var animation: Animation = Animation.linear(duration: 2).repeatForever(autoreverses: false)
+    var animation: Animation = Animation.linear(duration: 1).repeatForever(autoreverses: false)
     //@ObservedObject
     var animationHandler: AnimationHandler
     @State var rainbowPosition: CGFloat = 0
@@ -95,6 +95,7 @@ struct SharpRainbowView: View{
                 }
      //           .clipped()
             }
+
         }
         .onAppear(){
             if self.animationHandler.isStarted{
