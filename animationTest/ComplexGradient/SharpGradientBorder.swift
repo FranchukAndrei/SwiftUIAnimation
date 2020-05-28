@@ -13,6 +13,7 @@ struct SharpGradientBorder: View {
     public let end: Color
     let bottomRadius: CGFloat
     let topRadius: CGFloat
+    let gradientLength: CGFloat
 //    let middleGradientStop: CGFloat = 0.3
     init(start: Color = .blue,
         end: Color = .red,
@@ -23,7 +24,7 @@ struct SharpGradientBorder: View {
         self.end = end
         self.bottomRadius = bottomRadius
         self.topRadius = topRadius
- //       self.gradientLength = gradientLength
+        self.gradientLength = gradientLength
     }
     var body: some View {
         GeometryReader{geometry in
@@ -45,7 +46,7 @@ struct SharpGradientBorder: View {
 //                                    endAngle: Angle(degrees: 360)))
 //                        .frame(height: self.bottomRadius)
 //                }
-                SharpGradientView(start: self.start, end: self.end, bottomRadius: self.bottomRadius, topRadius: self.topRadius)
+                SharpGradientView(start: self.start, end: self.end, bottomRadius: self.bottomRadius, topRadius: self.topRadius, gradientLength: self.gradientLength)
                     // .frame(width: self.bottomRadius + self.topRadius )
             }
         }
@@ -66,7 +67,7 @@ struct SharpGradientView: View {
     let bottomRadius: CGFloat
     let topRadius: CGFloat
     let gradientLength: CGFloat
-    init(start: Color, end: Color, bottomRadius: CGFloat = 20, topRadius: CGFloat = 10, //direction: Bool = true,
+    init(start: Color, end: Color, bottomRadius: CGFloat , topRadius: CGFloat, //direction: Bool = true,
          gradientLength: CGFloat? = nil){
         self.start = start
         self.end = end
@@ -78,12 +79,12 @@ struct SharpGradientView: View {
         if let length = gradientLength{
             self.gradientLength = length
         }else{
-            self.gradientLength = min(topRadius, bottomRadius)
+            self.gradientLength =  bottomRadius / 2
         }
         
     }
     var body: some View {
-        GeometryReader{geometry in
+     //   GeometryReader{geometry in
             VStack(spacing: 0){
                 Rectangle()
                     .fill(RadialGradient(gradient: Gradient(stops: [
@@ -114,6 +115,7 @@ struct SharpGradientView: View {
                 HStack(spacing: 0){
                     Rectangle()
                         .fill(self.end)
+                    
                     GeometryReader{geometry in
                         Rectangle()
                             .fill(AngularGradient(gradient: Gradient(stops: [
@@ -124,6 +126,7 @@ struct SharpGradientView: View {
                                         startAngle: self.directionTo(gradientPart: self.start, blockWidth: geometry.size.width),
                                         endAngle: Angle(degrees: 360)))
                     }
+//                    .frame(width: self.bottomRadius + self.gradientLength + self.topRadius)
                     Rectangle()
                         .fill(RadialGradient(gradient:  Gradient(stops: [
                                        .init(color: self.end, location: 0),
@@ -141,32 +144,10 @@ struct SharpGradientView: View {
                 }
                 .frame(height: self.bottomRadius)
             }
-            .clipShape(self.leadingEdgeTrimmed(in: geometry.frame(in: .global)))
-        }
+                .leadingEdgeTrimmed(waveGeometry: WaveGeometry(topRadius: topRadius, bottomRadius: bottomRadius, gradientLength: gradientLength))
+     //   }
     }
-    func leadingEdgeTrimmed(in rect: CGRect) -> Path{
-        return Path(){path in
-            let topLeading = CGPoint(x: 0, y: 0)
-            let topTrailing = CGPoint(x: rect.width, y: 0)
-            let topArcCenter = CGPoint(x: rect.width, y: self.topRadius)
-//            let topArcEnd = CGPoint(x: rect.width - self.topRadius,
-//                                    y: self.topRadius)
-            let bottomArcCenter = CGPoint(x: rect.width - self.topRadius - self.bottomRadius,
-                                          y: rect.height - self.bottomRadius)
-            let bottomArcStart = CGPoint(x: rect.width - self.topRadius, y: self.topRadius)
-//            let arcCrossBottom = CGFloat(sqrt(pow(self.bottomRadius + gradientLength, 2) - pow(self.bottomRadius, 2)))
-            
-//            let bottomArcEnd = CGPoint(x: bottomArcCenter.x + arcCrossBottom, y: rect.height)
-            let bottomLeading = CGPoint(x: 0, y: rect.height)
-            path.move(to: topLeading)
-            path.addLine(to: topTrailing)
-            path.addArc(center: topArcCenter, radius: topRadius, startAngle: Angle(degrees: 270), endAngle: Angle(degrees: 180), clockwise: true)//on our apinion it would be counterclockwise but apple got reflected coordinate system, so it isnt
-            path.addLine(to: bottomArcStart)
-            path.addArc(center: bottomArcCenter, radius: bottomRadius, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 90), clockwise: false)//the same here
-            path.addLine(to: bottomLeading)
-            path.addLine(to: topLeading)
-        }
-    }
+
     func directionTo(gradientPart: Color, blockWidth: CGFloat) -> Angle{
         let angleOf = gradientAngles(blockWidth: blockWidth)
         var angle = Angle.zero
@@ -197,6 +178,43 @@ struct SharpGradientView: View {
 
 }
 
+struct LeadingEdgeTrimmed: ViewModifier{
+    let waveGeometry: WaveGeometry
+    func body(content: Content) -> some View{
+        GeometryReader{geometry in
+            content
+                .clipShape(self.leadingEdgeTrimmed(in: geometry.frame(in: .global)))
+        }
+    }
+    func leadingEdgeTrimmed(in rect: CGRect) -> Path{
+        return Path(){path in
+            let topLeading = CGPoint(x: 0, y: 0)
+            let topTrailing = CGPoint(x: rect.width, y: 0)
+            let topArcCenter = CGPoint(x: rect.width, y: waveGeometry.topRadius)
+//            let topArcEnd = CGPoint(x: rect.width - self.topRadius,
+//                                    y: self.topRadius)
+            let bottomArcCenter = CGPoint(x: rect.width - waveGeometry.topRadius - waveGeometry.bottomRadius,
+                                          y: rect.height - waveGeometry.bottomRadius)
+            let bottomArcStart = CGPoint(x: rect.width - waveGeometry.topRadius, y: waveGeometry.topRadius)
+//            let arcCrossBottom = CGFloat(sqrt(pow(self.bottomRadius + gradientLength, 2) - pow(self.bottomRadius, 2)))
+            
+//            let bottomArcEnd = CGPoint(x: bottomArcCenter.x + arcCrossBottom, y: rect.height)
+            let bottomLeading = CGPoint(x: 0, y: rect.height)
+            path.move(to: topLeading)
+            path.addLine(to: topTrailing)
+            path.addArc(center: topArcCenter, radius: waveGeometry.topRadius, startAngle: Angle(degrees: 270), endAngle: Angle(degrees: 180), clockwise: true)//on our apinion it would be counterclockwise but apple got reflected coordinate system, so it isnt
+            path.addLine(to: bottomArcStart)
+            path.addArc(center: bottomArcCenter, radius: waveGeometry.bottomRadius, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 90), clockwise: false)//the same here
+            path.addLine(to: bottomLeading)
+            path.addLine(to: topLeading)
+        }
+    }
+}
+extension View{
+    func leadingEdgeTrimmed(waveGeometry: WaveGeometry) -> some View{
+        self.modifier(LeadingEdgeTrimmed(waveGeometry: waveGeometry))
+    }
+}
 extension CGPoint{
     func radialDirection(to point: CGPoint) -> Angle{
         let deltaX =  point.x - self.x

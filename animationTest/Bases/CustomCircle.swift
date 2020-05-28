@@ -42,7 +42,7 @@ struct CircleView: View{
     var body: some View{
         Circle()
             .fill(Color.green)
-            .frame(height: self.radius * 2)
+            .frame(width: self.radius * 2, height: self.radius * 2)
             .overlay(
                 Text("Habra")
                     .font(.largeTitle)
@@ -57,7 +57,7 @@ struct CustomCircleView: View{
         CustomCircle(radius: radius)
 //        CustomCircle()
             .fill(Color.gray)
-            //.frame(height: self.radius * 2)
+            //.frame(width: self.radius * 2, height: self.radius * 2)
             .overlay(
                 Text("Habr")
                     .font(.largeTitle)

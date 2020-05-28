@@ -18,29 +18,38 @@ struct WaveDescription{
 
 
 struct SharpWavePosition: AnimatableModifier {
-    var wave: WaveDescription
-    var animationHandler: AnimationHandler
+    let wave: WaveDescription
+    let animationHandler: AnimationHandler
     var time: CGFloat
+    var currentPosition: CGFloat
+//    var startTime = Date()
     private let timing: TimingCurve
-    public var animatableData: Double {
-        get { Double(time) }
+    public var animatableData: CGFloat {
+        get { time}
         set {
             if animationHandler.isStarted{
-                self.time = CGFloat(newValue)
+                self.time = newValue
                 if self.time != self.animationHandler.currentAnimationPosition{
                     self.animationHandler.currentAnimationPosition = self.time
                 }
+            }
+            let currentTime = newValue - CGFloat(Int(newValue))
+            self.currentPosition = SharpWavePosition.calculate(forWave: wave.ind, ofWaves: wave.totalWavesCount, overTime: currentTime)
+            if currentPosition < 0.01{
+                animationHandler.currentWaveBaseColor = wave.baseColor
             }
         }
     }
     init(wave: WaveDescription, time: CGFloat, animationHandler: AnimationHandler){
         self.wave = wave
         self.time = time
-        self.timing = TimingCurve.superEaseOut(duration: 1)
+        self.timing = TimingCurve.superEaseIn(duration: 1)
         self.animationHandler = animationHandler
+        self.currentPosition = 0
     }
     
     static func calculate(forWave: Int, ofWaves: Int, overTime: CGFloat) -> CGFloat{
+        
         let time = overTime - CGFloat(Int(overTime))
         let oneWaveWidth = CGFloat(1) / CGFloat(ofWaves)
         let initialPosition = oneWaveWidth * CGFloat(forWave)
@@ -57,15 +66,12 @@ struct SharpWavePosition: AnimatableModifier {
 
     func body(content: Content) -> some View {
         let oneWaveWidth = CGFloat(1) / CGFloat(wave.totalWavesCount)
-        //let frameWidthWithReserve = self.frameWidth * (1 + oneWaveWidth)
-        let currentTime = time - CGFloat(Int(time))
-        let currentPosition = SharpWavePosition.calculate(forWave: wave.ind, ofWaves: wave.totalWavesCount, overTime: currentTime)
         var thisIsFirstWave = false
         if currentPosition < oneWaveWidth{
             thisIsFirstWave = true
         }
         //recalculate position using timing curve just like the built in animation do
-        let animatedPosition = timing.getActual(of: currentPosition)
+        let animatedPosition = timing.getY(onX: currentPosition)
         // let animatedPosition = currentPosition
         
 //        if wave.ind == 0{

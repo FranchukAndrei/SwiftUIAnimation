@@ -17,10 +17,15 @@ struct WaveGeometry{
 class AnimationHandler: ObservableObject{
     @Published var isStarted: Bool = true
     @Published var isShown: Bool = false
+    let rainbowColors: [Color] = [.red, .green, .blue]
     var currentAnimationPosition: CGFloat = 0
+    var currentWaveBaseColor: Color
+    var currentTransitionInBaseColor: Color = .clear
+    var currentTransitionOutBaseColor: Color = .clear
     var waveGeometry: WaveGeometry
-    init(topRadius: CGFloat = 5, bottomRadius: CGFloat = 20, gradientLength: CGFloat = 10){
+    init(topRadius: CGFloat = 7, bottomRadius: CGFloat = 18, gradientLength: CGFloat = 8){
         self.waveGeometry = WaveGeometry(topRadius: topRadius, bottomRadius: bottomRadius, gradientLength: gradientLength)
+        self.currentWaveBaseColor = .clear
     }
 }
 
@@ -30,9 +35,8 @@ struct AdvancedTimingRainbow: View {
     @ObservedObject var animationHandler = AnimationHandler()
     var body: some View {
         VStack{
-            SharpRainbowView(rainbowColors: [.yellow, .green, .blue], animationHandler: self.animationHandler)
+            SharpRainbowView(animationHandler: self.animationHandler)
                 .frame(height: self.height)
-                
             Button(action: {
                 self.animationHandler.isStarted.toggle()
             }){
@@ -49,17 +53,17 @@ struct AdvancedTimingRainbow: View {
 struct SharpRainbowView: View{
     let waves: [SharpGradientBorder]
     var animation: Animation = Animation.linear(duration: 2).repeatForever(autoreverses: false)
-    @ObservedObject var animationHandler: AnimationHandler
+    //@ObservedObject
+    var animationHandler: AnimationHandler
     @State var rainbowPosition: CGFloat = 0
-    init(rainbowColors: [Color],
-        animationHandler: AnimationHandler,
+    init(animationHandler: AnimationHandler,
         backgroundColor: Color = .clear
     ){
         self.animationHandler = animationHandler
         let bottomRadius = animationHandler.waveGeometry.bottomRadius
         let topRadius = animationHandler.waveGeometry.topRadius
         let gradientLength = animationHandler.waveGeometry.gradientLength
-
+        let rainbowColors = animationHandler.rainbowColors
         guard var lastColor = rainbowColors.last else {fatalError("no colors to display in rainbow")}
         var allWaves = [SharpGradientBorder]()
         for color in rainbowColors{
@@ -80,16 +84,16 @@ struct SharpRainbowView: View{
                     ForEach(self.waves.indices, id: \.self){ind in
                         self.waves[ind]
                             .positionOfSharp(wave: WaveDescription(ind: ind,
-                                                                   totalWavesCount: self.waves.count,
-                                                                   width: geometry.size.width,
-                                                                   baseColor: self.waves[ind].end,
-                                                                   gradientLength: self.waves[ind].bottomRadius + self.waves[ind].topRadius),
+                                                    totalWavesCount: self.waves.count,
+                                                    width: geometry.size.width,
+                                                    baseColor: self.waves[ind].end,
+                                                    gradientLength: self.waves[ind].bottomRadius + self.waves[ind].topRadius),
                                              inTime: self.rainbowPosition,
                                              animationHandler: self.animationHandler)
                             .animation(self.animation)
                     }
                 }
-                .clipped()
+     //           .clipped()
             }
         }
         .onAppear(){
@@ -102,9 +106,9 @@ struct SharpRainbowView: View{
              if newValue == false{
                 let newPosition = self.animationHandler.currentAnimationPosition
                 print("animated from \(self.rainbowPosition - 1) to \(self.rainbowPosition) stopped at \(newPosition)")
-                 withAnimation(.none){//not working:(((
+               //  withAnimation(.none){//not working:(((
                     self.rainbowPosition = newPosition
-                 }
+               //  }
              }else {
                //   self.startTime = Date()
                   self.rainbowPosition += 1

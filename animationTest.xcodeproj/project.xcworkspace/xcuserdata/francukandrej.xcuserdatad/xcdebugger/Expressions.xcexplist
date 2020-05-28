@@ -3,19 +3,60 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "closure #2 in closure #1 in closure #1 in Truncate.body(content:):TransitionTestView.swift">
+      </ContextState>
+      <ContextState
          contextName = "CustomCircle.animatableData.setter:CustomCircle.swift">
       </ContextState>
       <ContextState
          contextName = "AnimatedRect.body.getter:AnimationStopping.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in closure #1 in closure #1 in SharpRainbowView.body.getter:AdvancedTimingRainbow.swift">
+         contextName = "closure #2 in AnimatedRectObservedObject.body.getter:AnimationStopping.swift">
+      </ContextState>
+      <ContextState
+         contextName = "SharpGradientBorder.init(start:end:bottomRadius:topRadius:gradientLength:):SharpGradientBorder.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "start.uiColor">
+            </PersistentString>
+            <PersistentString
+               value = "end.uiColor">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in CGPathRef.points.getter:TimingCurveView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "element.pointee">
+            </PersistentString>
+            <PersistentString
+               value = "element.pointee.points">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in AnimatedRect.body.getter:AnimationStopping.swift">
+      </ContextState>
+      <ContextState
+         contextName = "TimingCurve.getY(onX:):TimingCurveView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "TimingCurve.storedCurveParts">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "SharpRainbowView.body.getter:AdvancedTimingRainbow.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in AnimatedRect.body.getter:AnimationStopping.swift">
+         contextName = "SharpGradientBorder.directionTo(gradientPart:blockWidth:):SharpGradientBorder.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "angle.degrees">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "RainbowView.bordersPositionsOverTime(time:):ContentView.swift">
@@ -26,18 +67,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #2 in AnimatedRectObservedObject.body.getter:AnimationStopping.swift">
+         contextName = "TwoParameterBorder.animatableData.setter:SimpleBorderMove.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in closure #1 in closure #1 in SharpRainbowView.body.getter:AdvancedTimingRainbow.swift">
+      </ContextState>
+      <ContextState
+         contextName = "TwoParameterBorder.animatableData.getter:SimpleBorderMove.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in AnimatedRectObservedObject.body.getter:AnimationStopping.swift">
-      </ContextState>
-      <ContextState
-         contextName = "SharpGradientBorder.directionTo(gradientPart:blockWidth:):SharpGradientBorder.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "angle.degrees">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

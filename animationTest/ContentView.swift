@@ -13,9 +13,9 @@ struct ContentView: View{
     @State var position: CGFloat = 0
     var body: some View{
 //        RainbowBarExampleView()
-//          SimpleBorderMove()
-        TransitionTestView()
-  //      TransitionTestView()
+//        SimpleBorderMove()
+//         TransitionTestView()
+        TransitionRainbowView()
 //        SharpGradientBorder()
         //     CustomCircleTestView()
       //  TestRainbowView()
@@ -23,7 +23,10 @@ struct ContentView: View{
        // ZIndexTestView()
        // AnimationStopping()
         //FullSwiftUIRainbow()
-//        TransitionView()
+//               TransitionView()
+ //       TimingCurveView()
+  //      TransitionWithInfiniteAnimation()
+        
     }
 }
 

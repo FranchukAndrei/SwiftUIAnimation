@@ -27,6 +27,7 @@
 		90759595247980E8006751A5 /* SimpleBorderMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90759594247980E8006751A5 /* SimpleBorderMove.swift */; };
 		90759597247C422E006751A5 /* TransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90759596247C422D006751A5 /* TransitionView.swift */; };
 		9075959A247D53A5006751A5 /* TimingCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90759599247D53A5006751A5 /* TimingCurveView.swift */; };
+		90A2B03A247DC5A10078FBD6 /* TransitionWithInfiniteAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A2B039247DC5A10078FBD6 /* TransitionWithInfiniteAnimation.swift */; };
 		90D8E2E4246EA42E002AE17D /* CustomCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D8E2E3246EA42E002AE17D /* CustomCircle.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		90759594247980E8006751A5 /* SimpleBorderMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SimpleBorderMove.swift; path = animationTest/Bases/SimpleBorderMove.swift; sourceTree = SOURCE_ROOT; };
 		90759596247C422D006751A5 /* TransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransitionView.swift; path = animationTest/Bases/TransitionView.swift; sourceTree = SOURCE_ROOT; };
 		90759599247D53A5006751A5 /* TimingCurveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimingCurveView.swift; sourceTree = "<group>"; };
+		90A2B039247DC5A10078FBD6 /* TransitionWithInfiniteAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionWithInfiniteAnimation.swift; sourceTree = "<group>"; };
 		90D8E2E3246EA42E002AE17D /* CustomCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomCircle.swift; path = animationTest/Bases/CustomCircle.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 				900AB27B2471BD3D00B65E49 /* Colors.swift */,
 				900AB2752470AA8E00B65E49 /* ZIndexTestView.swift */,
 				9075958A2472C2DA006751A5 /* AnimationStopping.swift */,
+				90A2B039247DC5A10078FBD6 /* TransitionWithInfiniteAnimation.swift */,
 				9075958E2476D693006751A5 /* TransitionTestView.swift */,
 			);
 			path = ComplexGradient;
@@ -229,6 +232,7 @@
 				9055443E245E237300239007 /* SceneDelegate.swift in Sources */,
 				900AB2782471BA0500B65E49 /* PositionModifiers.swift in Sources */,
 				900AB27C2471BD3D00B65E49 /* Colors.swift in Sources */,
+				90A2B03A247DC5A10078FBD6 /* TransitionWithInfiniteAnimation.swift in Sources */,
 				900AB23B246EE7E700B65E49 /* TestRainbow.swift in Sources */,
 				9075959A247D53A5006751A5 /* TimingCurveView.swift in Sources */,
 				900AB27224704EB900B65E49 /* AdvancedTimingRainbow.swift in Sources */,

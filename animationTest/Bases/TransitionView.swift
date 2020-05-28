@@ -43,15 +43,15 @@ struct TransitionView: View {
                 ForEach(views.indices, id: \.self){(ind: Int) in
                     Group{
                         if ind == self.currentViewInd{
- //                           self.views[ind]
+//                            self.views[ind]
                             Rectangle()
                                 .fill(Color.gray)
                                 .frame(width: 100, height: 100)
                                 .border(Color.black, width: 2)
                                 .overlay(Text("\(ind + 1)"))
-                         //       .transition(.scale)
+//                                .transition(.scale)
 //                               .transition(.asymmetric(
-//                                    insertion: .scale(scale: 0.1, anchor: .leading),
+//                                    insertion: AnyTransition.scale(scale: 0.1, anchor: .leading).combined(with: .opacity),
 //                                    removal: .move(edge: .trailing)))
                               .transition(.asymmetric(
                                   insertion: .spinIn(anchor: .bottomTrailing),
