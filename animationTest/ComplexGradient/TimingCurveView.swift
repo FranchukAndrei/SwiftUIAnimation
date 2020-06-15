@@ -44,17 +44,18 @@ class TimingCurve{
     
     //gets actual timing of given value according to trimming curve
     //position must by in (0...1) interval
-//    func getActual(of position: CGFloat) -> CGFloat{
-//        let correctPosition = max(min(position, 1), 0) / duration
-//        if correctPosition < 0.0000001{
-//            let reversedCurve = Path(UIBezierPath(cgPath: self.trimmingCurve.cgPath).reversing().cgPath)
-//            //trim to start point is impossible, so reverce the curve and get last point
-//            guard let point = reversedCurve.currentPoint else{fatalError("cant get current timing curve start point")}
-//            return point.y
-//        }
-//        guard let point = trimmingCurve.trimmedPath(from: 0, to: correctPosition).currentPoint else{fatalError("cant get current timing curve point at \(position)")}
-//        return point.y * self.duration
-//    }
+    func getActualPosition(of position: CGFloat) -> CGFloat{
+        let correctPosition = max(min(position, 1), 0) / duration
+        let trimmingCurve = TimingCurve.superEaseInPath
+        if correctPosition < 0.0000001{
+            let reversedCurve = Path(UIBezierPath(cgPath: trimmingCurve.cgPath).reversing().cgPath)
+            //trim to start point is impossible, so reverce the curve and get last point
+            guard let point = reversedCurve.currentPoint else{fatalError("cant get current timing curve start point")}
+            return point.y
+        }
+        guard let point = trimmingCurve.trimmedPath(from: 0, to: correctPosition).currentPoint else{fatalError("cant get current timing curve point at \(position)")}
+        return point.y * self.duration
+    }
     
     func getY(onX: CGFloat) -> CGFloat{
         let x = onX / duration
@@ -123,28 +124,28 @@ struct TimingCurveView: View{
                     .stroke(Color.black, lineWidth: 0.01)
             )
             .scaleEffect(self.scale)
-//            .overlay(
-//                ZStack{
-//                    ForEach(testPoints, id: \.self){point in
-//                        Circle()
-//                            .fill(Color.red)
-//                            .frame(width: 20, height: 20)
-//                            .offset(x: (point  - 0.5) * self.scale,
-//                                    y: (self.curve.getActual(of: point) - 0.5) * self.scale)
-//                    }
-//                }
-//            )
             .overlay(
                 ZStack{
                     ForEach(testPoints, id: \.self){point in
                         Circle()
-                            .fill(Color.green)
-                            .frame(width: 20, height: 20)
+                            .fill(Color.red)
+                            .frame(width: 10, height: 10)
                             .offset(x: (point  - 0.5) * self.scale,
-                                    y: (self.curve.getY(onX: point) - 0.5) * self.scale)
+                                    y: (self.curve.getActualPosition(of: point) - 0.5) * self.scale)
                     }
                 }
             )
+//            .overlay(
+//                ZStack{
+//                    ForEach(testPoints, id: \.self){point in
+//                        Circle()
+//                            .fill(Color.green)
+//                            .frame(width: 10, height: 10)
+//                            .offset(x: (point  - 0.5) * self.scale,
+//                                    y: (self.curve.getY(onX: point) - 0.5) * self.scale)
+//                    }
+//                }
+//            )
             .rotation3DEffect(Angle(degrees:180), axis: (x: 1, y: 0, z: 0))
         .frame(width: scale, height: scale)
     }

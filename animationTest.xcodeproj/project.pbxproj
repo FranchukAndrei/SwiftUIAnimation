@@ -15,6 +15,7 @@
 		900AB2782471BA0500B65E49 /* PositionModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900AB2772471BA0500B65E49 /* PositionModifiers.swift */; };
 		900AB27A2471BA8900B65E49 /* SharpPositionModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900AB2792471BA8900B65E49 /* SharpPositionModifier.swift */; };
 		900AB27C2471BD3D00B65E49 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 900AB27B2471BD3D00B65E49 /* Colors.swift */; };
+		90503DDB2496CBBC0038E4E9 /* OriginalRainbowBarDecomposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90503DDA2496CBBC0038E4E9 /* OriginalRainbowBarDecomposition.swift */; };
 		9055443C245E237300239007 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055443B245E237300239007 /* AppDelegate.swift */; };
 		9055443E245E237300239007 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055443D245E237300239007 /* SceneDelegate.swift */; };
 		90554440245E237300239007 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9055443F245E237300239007 /* ContentView.swift */; };
@@ -40,6 +41,7 @@
 		900AB2772471BA0500B65E49 /* PositionModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionModifiers.swift; sourceTree = "<group>"; };
 		900AB2792471BA8900B65E49 /* SharpPositionModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharpPositionModifier.swift; sourceTree = "<group>"; };
 		900AB27B2471BD3D00B65E49 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		90503DDA2496CBBC0038E4E9 /* OriginalRainbowBarDecomposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginalRainbowBarDecomposition.swift; sourceTree = "<group>"; };
 		90554438245E237300239007 /* animationTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = animationTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9055443B245E237300239007 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9055443D245E237300239007 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				9075959224797ED1006751A5 /* SimpleGradient */,
 				9075959324797EF9006751A5 /* ComplexGradient */,
 				9075959024797B73006751A5 /* OriginalRainbow.swift */,
+				90503DDA2496CBBC0038E4E9 /* OriginalRainbowBarDecomposition.swift */,
 				90554441245E237C00239007 /* Assets.xcassets */,
 				90554446245E237C00239007 /* LaunchScreen.storyboard */,
 				90554449245E237C00239007 /* Info.plist */,
@@ -227,6 +230,7 @@
 				9055443C245E237300239007 /* AppDelegate.swift in Sources */,
 				900AB23D246F6BEE00B65E49 /* GradientBorder.swift in Sources */,
 				900AB27A2471BA8900B65E49 /* SharpPositionModifier.swift in Sources */,
+				90503DDB2496CBBC0038E4E9 /* OriginalRainbowBarDecomposition.swift in Sources */,
 				900AB2762470AA8E00B65E49 /* ZIndexTestView.swift in Sources */,
 				9075958F2476D693006751A5 /* TransitionTestView.swift in Sources */,
 				9055443E245E237300239007 /* SceneDelegate.swift in Sources */,

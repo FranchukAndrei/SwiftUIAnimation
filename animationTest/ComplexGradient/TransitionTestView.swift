@@ -62,6 +62,10 @@ struct Truncate: AnimatableModifier {
             ZStack{
                 
                 content
+                
+             //   self.getShape(in: geometry.size).stroke(Color.black, lineWidth: 3)
+                        
+                
                     .clipShape(self.getShape(in: geometry.size))
                 
                 if self.leading{
@@ -95,7 +99,7 @@ struct Truncate: AnimatableModifier {
                         .offset(x: self.reflected
                             ? CGFloat(offset) - CGFloat(geometry.size.width + offset) * CGFloat(1 - self.pct)
                             : -CGFloat(offset) + CGFloat(geometry.size.width + offset) * CGFloat(1 - self.pct),
-                                //y: -80)
+                               // y: -40)
                                 y: 0)
                         .animation(nil)
                         .clipped()
@@ -126,7 +130,7 @@ struct Truncate: AnimatableModifier {
                         .offset(x: self.reflected
                             ? (geometry.size.width) - CGFloat(geometry.size.width + offset * 2) * self.pct
                             : -(geometry.size.width) + CGFloat(geometry.size.width + offset * 2) * self.pct,
-                                //y: -40)
+                           // y: -40)
                                 y: 0)
                         .animation(nil)
                         .clipped()
@@ -192,7 +196,7 @@ struct RainbowTransitionView: View {
             HStack(spacing: 0){
                 if isShown{
                     SharpRainbowView(animationHandler: animationHandler)
-                     .rotation3DEffect(Angle(degrees: 180), axis: (x: 0, y: 1, z: 0))
+                      .rotation3DEffect(Angle(degrees: 180), axis: (x: 0, y: 1, z: 0))
                         .drawingGroup()
 
                      .transition(AnyTransition.asymmetric(
@@ -208,17 +212,13 @@ struct RainbowTransitionView: View {
                 if isShown{
                     SharpRainbowView(animationHandler: animationHandler)
                         .drawingGroup()
-
                         .transition(AnyTransition.asymmetric(
                            insertion: AnyTransition.truncate(appeare: true, background: self.background, animationState: animationHandler).animation(animation),
                            removal: AnyTransition.truncate(appeare: false, background: self.background, animationState: animationHandler).animation(animation))
                         )
-
-                        
                 }
             }
 
- 
                 .frame(width: statusBarframe.width, height: 30)
             StatusBarHider(isShown: isShown)
         }
@@ -251,11 +251,15 @@ struct StatusBarHider: View{
                 self.internalIsShown = self.isShown
             }
         }
-        return Spacer()
+        return
+            Spacer()
             .statusBar(hidden: internalIsShown)
-            .animation(Animation.linear(duration: 0.3))
+           // .animation(Animation.linear(duration: 0.3).delay(0.7))
+        
     }
 }
+
+
 struct TransitionRainbowView: View {
     @ObservedObject var animationHandler = AnimationHandler()
     @State var isShown = false
@@ -273,10 +277,20 @@ struct TransitionRainbowView: View {
             .overlay(
                 VStack{
                     Button("Toggle waves"){
-                        withAnimation{
-                            self.isShown.toggle()
+                        withAnimation(){
+                             var delay: Double = 0
+                             if self.isShown{
+                                 let waveChangeTime: Double = Double(1) /  Double(self.animationHandler.rainbowColors.count)
+                                 let currentTime = Double(self.animationHandler.currentAnimationPosition)
+                                 let wavesPassed = Double(Int(currentTime / waveChangeTime))
+                                 delay =  (wavesPassed + 1) * waveChangeTime - currentTime
+                                 delay = max(delay - 0.01, 0)
+                                 print("currentTime: \(currentTime); delay \(delay)")
+                             }
+                             DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                                 self.isShown.toggle()
+                             }
                         }
-
                     }
                 }
             )

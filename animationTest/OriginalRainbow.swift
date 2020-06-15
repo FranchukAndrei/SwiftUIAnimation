@@ -16,6 +16,7 @@ struct RainbowBarExampleView: View {
     @State private var running: Bool = false
     var body: some View {
         return VStack {
+            Spacer()
             RainbowBar(waveEmitPeriod: 0.3,
                        visibleWavesCount: 3,
                        waveColors: [.red, .green, .blue],
@@ -36,7 +37,7 @@ struct RainbowBarExampleView: View {
             Spacer()
             Text(running ? "running" : "ready")
             Spacer()
-        }.edgesIgnoringSafeArea(.all)
+        }//.edgesIgnoringSafeArea(.all)
     }
 }
 public struct RainbowBar: View {
@@ -54,17 +55,17 @@ public struct RainbowBar: View {
     var animated: PassthroughSubject<Bool, Never>
 
     public var body: some View {
-        HStack {
-            WavesView(waveEmitPeriod: waveEmitPeriod,
-                      visibleWavesCount: visibleWavesCount,
-                      waveColors: waveColors,
-                      backgroundColor: backgroundColor,
-                      topCornerRadius: waveTopCornerRadius,
-                      bottomCornerRadius: waveBottomCornerRadius,
-                      animatedSignal: animated,
-                      completion: completion)
-                .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0), anchor: .center)
-            Spacer().frame(width: centerSpacing)
+        //HStack {
+//            WavesView(waveEmitPeriod: waveEmitPeriod,
+//                      visibleWavesCount: visibleWavesCount,
+//                      waveColors: waveColors,
+//                      backgroundColor: backgroundColor,
+//                      topCornerRadius: waveTopCornerRadius,
+//                      bottomCornerRadius: waveBottomCornerRadius,
+//                      animatedSignal: animated,
+//                      completion: completion)
+//                .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0), anchor: .center)
+//            Spacer().frame(width: centerSpacing)
             WavesView(waveEmitPeriod: waveEmitPeriod,
                       visibleWavesCount: visibleWavesCount,
                       waveColors: waveColors,
@@ -73,7 +74,9 @@ public struct RainbowBar: View {
                       bottomCornerRadius: waveBottomCornerRadius,
                       animatedSignal: animated,
                       completion: nil)
-        }.frame(height: height)
+                .frame(width: 150)
+       // }
+                .frame(height: height)
     }
     
     public init(waveEmitPeriod: Double,
@@ -223,7 +226,7 @@ struct WavesView: View {
             }
         }.onReceive(animatedSignal) { animated in
             self.animatedInnerState = animated
-        }.drawingGroup()
+        }//.drawingGroup()
     }
 }
 
@@ -255,7 +258,7 @@ struct WaveView: View {
     }
     
     var body: some View {
-        makeWave(from: node).animation(Animation.easeIn(duration: animationDuration).delay(node.delay)).onAppear {
+        makeWave(from: node).animation(Animation.easeIn(duration: animationDuration).delay(node.delay)).onAppear{
             self.animated.toggle()
         }
     }
@@ -270,7 +273,7 @@ struct NotchWave: Shape {
 
     var animatableData: CGFloat {
         get { return phase }
-        set { phase = newValue }
+        set { phase = newValue}
     }
     
     func path(in rect: CGRect) -> Path {
@@ -305,7 +308,7 @@ struct NotchWave: Shape {
 
         p.closeSubpath()
         
-        return p
+        return p.applying(.init(translationX: 0, y: height * self.phase))
     }
 }
 

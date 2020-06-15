@@ -49,7 +49,7 @@ struct SharpWavePosition: AnimatableModifier {
     }
     
     static func calculate(forWave: Int, ofWaves: Int, overTime: CGFloat) -> CGFloat{
-        
+
         let time = overTime - CGFloat(Int(overTime))
         let oneWaveWidth = CGFloat(1) / CGFloat(ofWaves)
         let initialPosition = oneWaveWidth * CGFloat(forWave)
@@ -72,7 +72,6 @@ struct SharpWavePosition: AnimatableModifier {
         }
         //recalculate position using timing curve just like the built in animation do
         let animatedPosition = timing.getY(onX: currentPosition)
-        // let animatedPosition = currentPosition
         
 //        if wave.ind == 0{
 //            print("current animation position \(currentTime)")
@@ -80,20 +79,25 @@ struct SharpWavePosition: AnimatableModifier {
         return
             Group{
                 content
-                    .animation(nil)
                     .offset(x: -wave.width + animatedPosition * (wave.width +  wave.gradientLength),
+//                            .offset(x: -wave.width + currentPosition * (wave.width +  wave.gradientLength),
                             //to watch how waves move uncoment this
-                           // y: CGFloat(self.waveInd * 20))
-                        y:0)
-                    .zIndex(-Double(animatedPosition))
-                    .transition(.identity)
+//                                y: CGFloat(self.wave.ind * 20))
+                                           y:0)
+//                    .zIndex(-Double(animatedPosition))
+                    .zIndex(-Double(currentPosition))
+                    //.transition(.identity)
+                       .animation(nil)
 
                 if thisIsFirstWave{
                     content
-                        .animation(nil)
-                        .offset(x: wave.gradientLength, y: 0)
+                        .offset(x: wave.gradientLength + animatedPosition * (wave.width +  wave.gradientLength),
+//                        .offset(x: wave.gradientLength + currentPosition * (wave.width +  wave.gradientLength),
+                                y: 0)
+//                               y: -20)
                         .zIndex(-2)
-                        .transition(.identity)
+                       // .transition(.identity)
+                        .animation(nil)
                 }
             }
     }

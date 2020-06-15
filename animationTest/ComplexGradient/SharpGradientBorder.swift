@@ -61,19 +61,16 @@ struct GradientTail: View{
 struct SharpGradientView: View {
     let start: Color
     let middle: Color
-    let middleGradientStop: CGFloat = 0.3
+    let middleGradientStop: CGFloat = 0.2
     let end: Color
-//    let direction: Bool // true = right to left, fals = left to right
     let bottomRadius: CGFloat
     let topRadius: CGFloat
     let gradientLength: CGFloat
-    init(start: Color, end: Color, bottomRadius: CGFloat , topRadius: CGFloat, //direction: Bool = true,
+    init(start: Color, end: Color, bottomRadius: CGFloat , topRadius: CGFloat,
          gradientLength: CGFloat? = nil){
         self.start = start
         self.end = end
         self.middle = Color(averageOf: [start, end])
-
-//        self.direction = direction
         self.topRadius = topRadius
         self.bottomRadius = bottomRadius
         if let length = gradientLength{
@@ -84,69 +81,73 @@ struct SharpGradientView: View {
         
     }
     var body: some View {
-     //   GeometryReader{geometry in
-            VStack(spacing: 0){
+        VStack(spacing: 0){
+            Rectangle()
+                .fill(RadialGradient(gradient: Gradient(stops: [
+                            .init(color: self.start, location: 0),
+                            .init(color: self.middle, location: self.middleGradientStop),
+                            .init(color: self.end, location: 1)]),
+                         center: .bottomTrailing,
+                         startRadius: self.topRadius,
+                         endRadius: self.topRadius + self.gradientLength)
+                )
+                .frame(height: self.topRadius)
+         //       .border(Color.blue, width:  0.5)
+            HStack(spacing: 0){
                 Rectangle()
-                    .fill(RadialGradient(gradient: Gradient(stops: [
-                                .init(color: self.start, location: 0),
-                                .init(color: self.middle, location: self.middleGradientStop),
-                                .init(color: self.end, location: 1)]),
-                             center: .bottomTrailing,
-                             startRadius: self.topRadius,
-                             endRadius: self.topRadius + self.gradientLength)
-                    )
-                    .frame(height: self.topRadius)
-                 //   .position(x: geometry.size.width / 2, y: self.topRadius / 2)
-                HStack(spacing: 0){
-                    Rectangle()
-                        .fill(self.end)
-                    Rectangle()
-                        .fill(LinearGradient(
-                            gradient: Gradient(stops: [
-                                .init(color: self.end, location: 0),
-                                .init(color: self.middle, location: 1 - self.middleGradientStop),
-                                .init(color: self.start, location: 1)]),
-                            startPoint: .leading,
-                            endPoint: .trailing))
-                        .frame(width: self.gradientLength)
-                    Spacer()
-                        .frame(width: self.topRadius)
-                }
-                HStack(spacing: 0){
-                    Rectangle()
-                        .fill(self.end)
-                    
-                    GeometryReader{geometry in
-                        Rectangle()
-                            .fill(AngularGradient(gradient: Gradient(stops: [
-                                            .init(color: self.end, location: 0),
-                                            .init(color: self.middle, location: 1 - self.angularGradientMiddleStop(blockWidth: geometry.size.width)),
-                                            .init(color: self.start, location: 1)]),
-                                        center: .bottomLeading,
-                                        startAngle: self.directionTo(gradientPart: self.start, blockWidth: geometry.size.width),
-                                        endAngle: Angle(degrees: 360)))
-                    }
-//                    .frame(width: self.bottomRadius + self.gradientLength + self.topRadius)
-                    Rectangle()
-                        .fill(RadialGradient(gradient:  Gradient(stops: [
-                                       .init(color: self.end, location: 0),
-                                       .init(color: self.middle, location:  1 - self.middleGradientStop),
-                                       .init(color: self.start, location: 1)]),
-                                 center: .topLeading,
-                                 startRadius: self.bottomRadius - self.gradientLength,
-                                 endRadius: self.bottomRadius)
-                        )
-                        .frame(width: self.bottomRadius, height: self.bottomRadius)
-                    Spacer()
-                        .frame(width: self.topRadius)
-//                    .position(x: geometry.size.width / 2, y: geometry.size.height - self.bottomRadius / 2)
-                    //.offset(x: 0, y: -(geometry.size.height / 2 - self.topRadius / 2))
-                }
-                .frame(height: self.bottomRadius)
+                    .fill(self.end)
+            //        .border(Color.blue, width: 0.5)
+
+                Rectangle()
+                    .fill(LinearGradient(
+                        gradient: Gradient(stops: [
+                            .init(color: self.end, location: 0),
+                            .init(color: self.middle, location: 1 - self.middleGradientStop),
+                            .init(color: self.start, location: 1)]),
+                        startPoint: .leading,
+                        endPoint: .trailing))
+                    .frame(width: self.gradientLength)
+         //       .border(Color.blue, width: 0.5)
+
+                Spacer()
+                    .frame(width: self.topRadius)
             }
-                .leadingEdgeTrimmed(waveGeometry: WaveGeometry(topRadius: topRadius, bottomRadius: bottomRadius, gradientLength: gradientLength))
-            //.drawingGroup()
-     //   }
+            HStack(spacing: 0){
+                Rectangle()
+                    .fill(self.end)
+               // .border(Color.blue, width: 0.5)
+
+                GeometryReader{geometry in
+                    Rectangle()
+                        .fill(AngularGradient(gradient: Gradient(stops: [
+                                        .init(color: self.end, location: 0),
+                                        .init(color: self.middle, location: 1 - self.angularGradientMiddleStop(blockWidth: geometry.size.width)),
+                                        .init(color: self.start, location: 1)]),
+                                    center: .bottomLeading,
+                                    startAngle: self.directionTo(gradientPart: self.start, blockWidth: geometry.size.width),
+                                    endAngle: Angle(degrees: 360)))
+                 //   .border(Color.blue, width: 0.5)
+
+                }
+                Rectangle()
+                    .fill(RadialGradient(gradient:  Gradient(stops: [
+                                   .init(color: self.end, location: 0),
+                                   .init(color: self.middle, location:  1 - self.middleGradientStop),
+                                   .init(color: self.start, location: 1)]),
+                             center: .topLeading,
+                             startRadius: self.bottomRadius - self.gradientLength,
+                             endRadius: self.bottomRadius)
+                    )
+              //      .border(Color.blue, width:  0.5)
+
+                    .frame(width: self.bottomRadius, height: self.bottomRadius)
+                Spacer()
+                    .frame(width: self.topRadius)
+            }
+            .frame(height: self.bottomRadius)
+        }
+            .leadingEdgeTrimmed(waveGeometry: WaveGeometry(topRadius: topRadius, bottomRadius: bottomRadius, gradientLength: gradientLength))
+        //.drawingGroup()
     }
 
     func directionTo(gradientPart: Color, blockWidth: CGFloat) -> Angle{
@@ -160,11 +161,6 @@ struct SharpGradientView: View {
         }
         return angle
     }
-    func angularGradientMiddleStop(blockWidth: CGFloat) -> CGFloat{
-        let angleOf = gradientAngles(blockWidth: blockWidth)
-        let result: CGFloat = CGFloat(angleOf.middle.degrees - angleOf.start.degrees) / CGFloat(angleOf.end.degrees - angleOf.start.degrees)
-        return result
-    }
     func gradientAngles(blockWidth: CGFloat) -> (start: Angle, middle: Angle, end: Angle){
         let blockHeight = self.bottomRadius
         let center = CGPoint(x: 0, y: blockHeight)
@@ -174,7 +170,11 @@ struct SharpGradientView: View {
         let middleAngle = center.radialDirection(to: topGradientStarts)
         let endAngle = Angle(degrees: 360)
         return (start: startAngle, middle: middleAngle, end: endAngle)
-
+    }
+    func angularGradientMiddleStop(blockWidth: CGFloat) -> CGFloat{
+        let angleOf = gradientAngles(blockWidth: blockWidth)
+        let result: CGFloat = CGFloat(angleOf.middle.degrees - angleOf.start.degrees) / CGFloat(angleOf.end.degrees - angleOf.start.degrees)
+        return result
     }
 
 }
@@ -250,6 +250,6 @@ extension CGPoint{
 struct SharpGradientBorder_Previews: PreviewProvider {
     static var previews: some View {
         SharpGradientBorder(start: .red, end: .yellow, bottomRadius: 20, topRadius: 10, gradientLength: 10)
-        .frame(width: 200, height: 40)
+        .frame(width: 200, height: 50)
     }
 }

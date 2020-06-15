@@ -90,17 +90,17 @@ struct SharpRainbowView: View{
                                                     gradientLength: self.waves[ind].bottomRadius + self.waves[ind].topRadius),
                                              inTime: self.rainbowPosition,
                                              animationHandler: self.animationHandler)
-                            .animation(self.animation)
+                            .animation(self.animationHandler.isStarted ? self.animation : .linear(duration: 0))
                     }
                 }
-     //           .clipped()
+                .clipped()
             }
 
         }
         .onAppear(){
-            if self.animationHandler.isStarted{
+  //          if self.animationHandler.isStarted{
                 self.rainbowPosition = 1
-            }
+  //          }
         }
         .onReceive(animationHandler.objectWillChange){
              let newValue = self.animationHandler.isStarted
@@ -112,7 +112,9 @@ struct SharpRainbowView: View{
                //  }
              }else {
                //   self.startTime = Date()
+//                withAnimation{
                   self.rainbowPosition += 1
+//                }
             }
         }
 

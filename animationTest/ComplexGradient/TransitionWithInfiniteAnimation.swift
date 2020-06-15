@@ -10,50 +10,53 @@ import SwiftUI
 class SomeObservedObject: ObservableObject{
     @Published var text = "text"
 }
+struct RainbowTransitionTest: View{
+    var animationHandler = AnimationHandler()
+    @State var isShown = false
+    let background = Color.white
+    let animation = Animation.timingCurve(Double(TimingCurve.control.point1.x),
+                                Double(TimingCurve.control.point1.y),
+                                Double(TimingCurve.control.point2.x),
+                                Double(TimingCurve.control.point2.y),
+                                duration: 1)
 
-struct TransitionWithInfiniteAnimation: View {
-    @ObservedObject var text = SomeObservedObject()
-    @State var isShown = true
-    var body: some View {
+    var body: some View{
         VStack{
-            Spacer()
-            if isShown{
-                SpiningRect(text: text)
-            }
-            Spacer()
-            Button(action: {
-                withAnimation(.easeInOut(duration: 5)){
-                    self.isShown.toggle()
-                    self.text.text += "1"
+            Group{
+                if isShown{
+                    SharpRainbowView(animationHandler: animationHandler)
+                        .transition(AnyTransition.asymmetric(
+                           insertion: AnyTransition.truncate(appeare: true, background: self.background, animationState: animationHandler).animation(animation),
+                           removal: AnyTransition.truncate(appeare: false, background: self.background, animationState: animationHandler).animation(animation))
+                        )
+                    
+                }else{
+                    Spacer()
                 }
-                
-            }){
-                Text("show")
+            }
+
+            Text("toggle animation").onTapGesture {
+                withAnimation(){
+                    var delay: Double = 0
+                    if self.isShown{
+                        let waveChangeTime: Double = Double(1) /  Double(self.animationHandler.rainbowColors.count)
+                        let currentTime = Double(self.animationHandler.currentAnimationPosition)
+                        let wavesPassed = Double(Int(currentTime / waveChangeTime))
+                        delay =  (wavesPassed + 1) * waveChangeTime - currentTime
+                        delay = max(delay - 0.05, 0)
+                        print("currentTime: \(currentTime); delay \(delay)")
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+                        self.isShown.toggle()
+                    }
+                }
             }
         }
     }
 }
-
-struct SpiningRect: View {
-    @ObservedObject var text: SomeObservedObject
-    @State var pct: Double = 0
-    var body: some View {
-        Rectangle()
-            .fill(Color.green)
-            .frame(width: 300, height: 300)
-            .overlay(Text(text.text))
-            .rotationEffect(Angle(degrees: 90 * pct))
-            .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false))
-            .transition(.scale)
-        .onAppear(){
-            self.pct = 1
-        }
-    }
-}
-
 
 struct TransitionWithInfiniteAnimation_Previews: PreviewProvider {
     static var previews: some View {
-        TransitionWithInfiniteAnimation()
+        RainbowTransitionTest().frame(height: 200)
     }
 }

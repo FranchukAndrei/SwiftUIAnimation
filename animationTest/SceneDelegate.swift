@@ -10,7 +10,6 @@ import UIKit
 import SwiftUI
 
 struct StatusBarFrame: EnvironmentKey {
-    
     static var defaultValue: CGRect {
         CGRect()
     }

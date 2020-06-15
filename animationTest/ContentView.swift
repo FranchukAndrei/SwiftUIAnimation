@@ -11,9 +11,18 @@ import SwiftUI
 
 struct ContentView: View{
     var body: some View{
-        TransitionRainbowView()
-
+        //  TransitionRainbowView()
+        //RainbowBarExampleView()
+        //AnimationStopping()
         //TransitionView()
+        // TestDidSet()
+        //AnimatedRectStopButton()
+        //AnimationStopping()
+        //AnimatedRectParentView()
+        //AdvancedTimingRainbow()
+        //RainbowTransitionTest()            .frame(height: 80)
+        TransitionRainbowView()
+        //TransitionRainbowView()
     }
 }
 
